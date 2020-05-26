@@ -1,0 +1,15 @@
+C:\Users\JAM\Source\Repos\FaceRecognition-DesktopServer\bin\Debug\facerecognition.exe.config
+C:\Users\JAM\Source\Repos\FaceRecognition-DesktopServer\bin\Debug\facerecognition.exe
+C:\Users\JAM\Source\Repos\FaceRecognition-DesktopServer\bin\Debug\facerecognition.pdb
+C:\Users\JAM\Source\Repos\FaceRecognition-DesktopServer\bin\Debug\FaceSDK.NET.dll
+C:\Users\JAM\Source\Repos\FaceRecognition-DesktopServer\obj\Debug\face_recognition.csprojAssemblyReference.cache
+C:\Users\JAM\Source\Repos\FaceRecognition-DesktopServer\obj\Debug\facerecognition.Client.resources
+C:\Users\JAM\Source\Repos\FaceRecognition-DesktopServer\obj\Debug\facerecognition.Server.resources
+C:\Users\JAM\Source\Repos\FaceRecognition-DesktopServer\obj\Debug\facerecognition.Options.resources
+C:\Users\JAM\Source\Repos\FaceRecognition-DesktopServer\obj\Debug\facerecognition.Properties.Resources.resources
+C:\Users\JAM\Source\Repos\FaceRecognition-DesktopServer\obj\Debug\facerecognition.Results.resources
+C:\Users\JAM\Source\Repos\FaceRecognition-DesktopServer\obj\Debug\face_recognition.csproj.GenerateResource.cache
+C:\Users\JAM\Source\Repos\FaceRecognition-DesktopServer\obj\Debug\face_recognition.csproj.CoreCompileInputs.cache
+C:\Users\JAM\Source\Repos\FaceRecognition-DesktopServer\obj\Debug\face_recognition.csproj.CopyComplete
+C:\Users\JAM\Source\Repos\FaceRecognition-DesktopServer\obj\Debug\facerecognition.exe
+C:\Users\JAM\Source\Repos\FaceRecognition-DesktopServer\obj\Debug\facerecognition.pdb
