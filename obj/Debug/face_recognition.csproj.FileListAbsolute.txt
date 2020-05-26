@@ -12,3 +12,4 @@ C:\Users\JAM\Source\Repos\FaceRecognition-DesktopServer\obj\Debug\face_recogniti
 C:\Users\JAM\Source\Repos\FaceRecognition-DesktopServer\obj\Debug\face_recognition.csproj.CopyComplete
 C:\Users\JAM\Source\Repos\FaceRecognition-DesktopServer\obj\Debug\facerecognition.exe
 C:\Users\JAM\Source\Repos\FaceRecognition-DesktopServer\obj\Debug\facerecognition.pdb
+C:\Users\JAM\source\repos\FaceRecognition-DesktopServer\obj\Debug\face_recognition.csprojAssemblyReference.cache

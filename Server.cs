@@ -125,9 +125,9 @@ namespace facerecognition
             string clientPort = remoteEndPoint.Substring(remoteEndPoint.IndexOf(":") + 1);
             add("Client " + remoteEndPoint + " connected");
 
-            Client client = new Client("Client " + clientIp + " @ " + clientPort);
-            client = new Client("Client " + clientIp + " @ " + clientPort);
-            this.BeginInvoke((Action)(() => client.Show()));
+            //Client client = new Client("Client " + clientIp + " @ " + clientPort);
+            //client = new Client("Client " + clientIp + " @ " + clientPort);
+            // this.BeginInvoke((Action)(() => client.Show()));
             
             NetworkStream stream = tcpClient.GetStream();
             string clientData = string.Empty;
@@ -139,26 +139,29 @@ namespace facerecognition
             {
                 while ((i = stream.Read(bytes, 0, bytes.Length)) != 0)
                 {
-                    if (!init) clientData += Encoding.ASCII.GetString(bytes, 0, i);
+
+                    if (!init)
+                    {
+                        clientData += Encoding.ASCII.GetString(bytes, 0, i);
+                    }
                     
                     if (clientData.Contains("<EOF>") && !init)
                     {
                         init = true;
-                        add("Hello");
                         string result = clientData.Substring(0, clientData.IndexOf("<EOF>"));
                         clientData = string.Empty;
                         byte[] imageBytes = Convert.FromBase64String(result);
                         MemoryStream ms = new MemoryStream(imageBytes, 0, imageBytes.Length);
                         ms.Position = 0;
-
                         Image img = Image.FromStream(ms);
-                        if (client == null || client.IsDisposed)
-                        {
-                            client = new Client("Client " + clientIp + " @ " + clientPort);
-                            this.BeginInvoke((Action)(() => client.Show()));
-                        }
-                        this.BeginInvoke((Action)(() => client.label1.Visible = false));
-                        this.BeginInvoke((Action)(() => client.pictureBox1.Image = img));
+
+                        //if (client == null || client.IsDisposed)
+                        //{
+                        //    client = new Client("Client " + clientIp + " @ " + clientPort);
+                        //    this.BeginInvoke((Action)(() => client.Show()));
+                        //}
+                        //this.BeginInvoke((Action)(() => client.label1.Visible = false));
+                        //this.BeginInvoke((Action)(() => client.pictureBox1.Image = img));
 
                         if (FaceList.Count == 0)
                         {
@@ -172,7 +175,7 @@ namespace facerecognition
                             fr.FacialFeatures = new FSDK.TPoint[FSDK.FSDK_FACIAL_FEATURE_COUNT];
                             fr.Template = new byte[FSDK.TemplateSize];
                             fr.image = new FSDK.CImage(img);
-                            img.Dispose();
+                            //img.Dispose();
 
                             fr.FacePosition = fr.image.DetectFace();
 
@@ -194,6 +197,7 @@ namespace facerecognition
                                 catch
                                 {
                                     add("Detecting eyes failed.");
+                                    init = false;
                                 }
 
                                 if (eyesDetected)
@@ -229,11 +233,10 @@ namespace facerecognition
                                         {
                                             SendBackToClient(tcpClient, "R=NONE;");
                                             add("No morethan 95.0% matches found in database faces");
-                                            init = false;
+                                            //init = false;
                                         }
                                         else
                                         {
-
                                             int index = 0;
                                             for (int x = 0; x < MatchedCount; x++)
                                             {
@@ -243,14 +246,14 @@ namespace facerecognition
                                                 }
                                             }
                                             SendBackToClient(tcpClient, "R=" + FaceName[index]);
-                                            init = false;
+                                            //init = false;
                                         }
                                     }
                                     else
                                     {
                                         SendBackToClient(tcpClient, "R=NONE;");
                                         add("No matches found. You can try to increase the FAR parameter in the Options dialog box.");
-                                        init = false; 
+                                        //init = false; 
                                     }
                                 }
                                 else
@@ -258,6 +261,17 @@ namespace facerecognition
                                     add("No eyes detected in photos.");
                                     init = false;
                                 }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (clientData.Contains(";"))
+                        {
+                            string result = clientData.Substring(0, clientData.IndexOf(";"));
+                            if (result == "OK")
+                            {
+                                init = false;
                             }
                         }
                     }
@@ -275,10 +289,10 @@ namespace facerecognition
                 
                 add("Client " + remoteEndPoint + " disconnected");
                 
-                if (client.Visible)
-                {
-                    BeginInvoke((Action)(() => client.Close()));
-                }
+                //if (client.Visible)
+                //{
+                //    this.BeginInvoke((Action)(() => client.Close()));
+                //}
             }
             catch
             {
@@ -321,7 +335,7 @@ namespace facerecognition
                 //pictureBox1.Height = img.Height;
                 //pictureBox1.Width = img.Width;
                 pictureBox1.Image = img;
-                img.Dispose();
+                //img.Dispose();
                 //pictureBox1.Refresh();
                 
                 //Graphics gr = pictureBox1.CreateGraphics();
