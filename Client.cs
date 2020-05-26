@@ -17,5 +17,10 @@ namespace facerecognition
                 this.WindowState = FormWindowState.Normal;
             }
         }
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            this.Disposed();
+            base.OnClosing(e);
+        }
     }
 }

@@ -127,6 +127,8 @@ namespace facerecognition
 
             Client client = new Client("Client " + clientIp + " @ " + clientPort);
             client = new Client("Client " + clientIp + " @ " + clientPort);
+            this.BeginInvoke((Action)(() => client.Show()));
+            
             NetworkStream stream = tcpClient.GetStream();
             string clientData = string.Empty;
             Byte[] bytes = new Byte[256];
@@ -319,7 +321,7 @@ namespace facerecognition
                 //pictureBox1.Height = img.Height;
                 //pictureBox1.Width = img.Width;
                 pictureBox1.Image = img;
-
+                img.Dispose();
                 pictureBox1.Refresh();
                 
                 //Graphics gr = pictureBox1.CreateGraphics();
@@ -336,6 +338,7 @@ namespace facerecognition
         {
             Application.Exit();
         }
+        
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Options frmOptions = new Options();
@@ -355,8 +358,7 @@ namespace facerecognition
                     //Assuming that faces are vertical (HandleArbitraryRotations = false) to speed up face detection
                     FSDK.SetFaceDetectionParameters(false, true, 384);
                     FSDK.SetFaceDetectionThreshold((int)FaceDetectionThreshold);
-
-
+                    
                     foreach (string fn in dlg.FileNames)
                     {
                         string name = Path.GetFileNameWithoutExtension(fn);
@@ -368,16 +370,14 @@ namespace facerecognition
                         fr.Template = new byte[FSDK.TemplateSize];
  
                         fr.image = new FSDK.CImage(fn);
-                        
-                        //add("Enrolling " + fn);
-                        
+                                               
                         fr.FacePosition = fr.image.DetectFace();
 
                         if (0 == fr.FacePosition.w)
                             if (dlg.FileNames.Length <= 1)
                                 MessageBox.Show("No faces found. Try to lower the Minimal Face Quality parameter in the Options dialog box.", "Enrollment error");
                             else
-                                add(name + " Faces not found. Try to lower the Minimal Face Quality parameter in the Options dialog box.");
+                                add(name + " face enroll failed.\nTry to lower the Minimal Face Quality parameter in the Options dialog box.");
                         else
                         {
                             fr.faceImage = fr.image.CopyRect((int)(fr.FacePosition.xc - Math.Round(fr.FacePosition.w * 0.5)), (int)(fr.FacePosition.yc - Math.Round(fr.FacePosition.w * 0.5)), (int)(fr.FacePosition.xc + Math.Round(fr.FacePosition.w * 0.5)), (int)(fr.FacePosition.yc + Math.Round(fr.FacePosition.w * 0.5)));
