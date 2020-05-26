@@ -322,7 +322,7 @@ namespace facerecognition
                 //pictureBox1.Width = img.Width;
                 pictureBox1.Image = img;
                 img.Dispose();
-                pictureBox1.Refresh();
+                //pictureBox1.Refresh();
                 
                 //Graphics gr = pictureBox1.CreateGraphics();
                 //gr.DrawRectangle(Pens.LightGreen, FaceList[listView1.SelectedIndices[0]].FacePosition.xc - FaceList[listView1.SelectedIndices[0]].FacePosition.w / 2, FaceList[listView1.SelectedIndices[0]].FacePosition.yc - FaceList[listView1.SelectedIndices[0]].FacePosition.w/2, FaceList[listView1.SelectedIndices[0]].FacePosition.w, FaceList[listView1.SelectedIndices[0]].FacePosition.w);

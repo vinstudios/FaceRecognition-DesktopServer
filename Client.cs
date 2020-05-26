@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace facerecognition
 {
@@ -19,7 +20,7 @@ namespace facerecognition
         }
         protected override void OnClosing(CancelEventArgs e)
         {
-            this.Disposed();
+            this.Dispose();
             base.OnClosing(e);
         }
     }

@@ -1,14 +1,6 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\bin\\Debug",
-    "\\bin\\Release",
-    "\\bin\\x64",
-    "\\bin\\x64\\Debug",
-    "\\bin\\x64\\Release",
-    "\\bin\\x86",
-    "\\bin\\x86\\Debug",
-    "\\bin\\x86\\Release"
+    ""
   ],
   "PreviewInSolutionExplorer": false
 }
